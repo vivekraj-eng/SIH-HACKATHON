@@ -1,0 +1,11 @@
+import { MapPin, Navigation, Search } from 'lucide-react-native';
+import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { colors, shadow } from '@/lib/theme';
+
+type Props = { destination: string; onDestinationChange: (value: string) => void; onSearch: () => void };
+
+export function RouteSearchBar({ destination, onDestinationChange, onSearch }: Props) {
+  return <View style={[styles.card, shadow]}><View style={styles.locationRow}><View style={styles.dot}><MapPin size={16} color={colors.teal} strokeWidth={2.5} /></View><View><Text style={styles.label}>START POINT</Text><Text style={styles.value}>Current location</Text></View></View><View style={styles.connector} /><View style={styles.locationRow}><View style={[styles.dot, styles.destinationDot]}><Navigation size={16} color={colors.red} strokeWidth={2.5} /></View><TextInput value={destination} onChangeText={onDestinationChange} placeholder="Where are you going?" placeholderTextColor={colors.muted} style={styles.input} returnKeyType="search" onSubmitEditing={onSearch} /></View><Pressable onPress={onSearch} style={({ pressed }) => [styles.button, pressed && { opacity: 0.8 }]}><Search size={18} color="#fff" strokeWidth={2.5} /><Text style={styles.buttonText}>Plan safer route</Text></Pressable></View>;
+}
+
+const styles = StyleSheet.create({ card: { backgroundColor: colors.surface, borderRadius: 24, padding: 18, marginBottom: 20 }, locationRow: { flexDirection: 'row', alignItems: 'center', gap: 12 }, dot: { width: 34, height: 34, borderRadius: 17, backgroundColor: colors.tealSoft, justifyContent: 'center', alignItems: 'center' }, destinationDot: { backgroundColor: colors.redSoft }, label: { fontSize: 10, fontWeight: '800', letterSpacing: 1, color: colors.muted, marginBottom: 3 }, value: { color: colors.ink, fontWeight: '700', fontSize: 15 }, input: { flex: 1, color: colors.ink, fontSize: 15, fontWeight: '700', paddingVertical: 8 }, connector: { borderLeftWidth: 1, borderLeftColor: colors.line, height: 18, marginLeft: 16 }, button: { height: 50, borderRadius: 15, backgroundColor: colors.ink, marginTop: 18, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: 9 }, buttonText: { color: '#fff', fontWeight: '800', fontSize: 15 } });
