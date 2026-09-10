@@ -1,5 +1,9 @@
 import { createContext, useState, useCallback, useContext, ReactNode } from 'react';
-import { AppSettings } from '@/lib/settings-context';
+
+type AppSettings = {
+  voiceGuidance: boolean;
+  hazardAlerts: boolean;
+};
 
 type SettingsProviderState = AppSettings & {
   setVoiceGuidance: (value: boolean) => void;

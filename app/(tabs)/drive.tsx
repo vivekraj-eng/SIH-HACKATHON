@@ -33,10 +33,10 @@ export default function Drive() {
   const phaseLabel: Record<AlertPhase, string> = {
     idle: 'Waiting for movement',
     monitoring: 'Safety monitoring active',
-    caution_500: 'Caution — 500 m ahead',
-    caution_250: 'Caution — 250 m ahead',
-    warning_100: 'Warning — 100 m ahead',
-    critical: 'High-risk zone reached',
+    caution_500: 'CAUTION · 500 m ahead',
+    caution_250: 'CAUTION · 250 m ahead',
+    warning_100: 'WARNING · 100 m ahead',
+    critical: 'HIGH RISK · hazard zone reached',
   };
 
   return (
